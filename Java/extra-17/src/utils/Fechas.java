@@ -19,7 +19,7 @@ public class Fechas {
         LocalDate fechafinal = LocalDate.parse(fecha, patron);
         
         //calculo la diferencia      
-        resultado = (int) ChronoUnit.DAYS.between(fechafinal, LocalDate.now());
+        resultado = (int) Math.abs(ChronoUnit.DAYS.between(fechafinal, LocalDate.now()));
         
         return resultado;       
         
