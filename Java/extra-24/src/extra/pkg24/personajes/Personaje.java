@@ -2,6 +2,8 @@
 
 package extra.pkg24.personajes;
 
+import extra.pkg24.armas.Armas;
+
 
 public abstract class Personaje {
     String nombre;
@@ -35,7 +37,7 @@ public abstract class Personaje {
     
     // método para el ataque de los personajes
     
-    public abstract void atacar(Personaje objetivo);
+    public abstract void atacar(Personaje objetivo, Armas arma);
 
     public String getNombre() {
         return nombre;

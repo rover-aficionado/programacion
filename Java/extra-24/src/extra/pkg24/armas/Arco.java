@@ -6,11 +6,9 @@ import extra.pkg24.utils.Aleatorio;
 
 
 public class Arco extends Armas{
-    int CantidadFlechas;
-    
-    public Arco(int CantidadFlechas, int probabilidadCritico, String nombre, int daño) {
+       
+    public Arco(int probabilidadCritico, String nombre, int daño) {
         super(nombre, daño, probabilidadCritico);
-        this.CantidadFlechas = CantidadFlechas;
     }
 
     
