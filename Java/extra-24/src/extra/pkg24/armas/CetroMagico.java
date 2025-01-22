@@ -8,22 +8,25 @@ import extra.pkg24.utils.Aleatorio;
 public class CetroMagico extends Armas {
     int cantidadHechizos;
 
-    public CetroMagico(int cantidadHechizos, String nombre, int daño) {
-        super(nombre, daño);
+    public CetroMagico(int cantidadHechizos, String nombre, int daño, int probabilidadCritico) {
+        super(nombre, daño, probabilidadCritico);
         this.cantidadHechizos = cantidadHechizos;
     }
 
     @Override
-    public void usar(int probabilidadCritico) {
+    public boolean usar(int probabilidadCritico) {
         Aleatorio aleatorio = new Aleatorio();
         
         if(aleatorio.numeroAleatorio()>=probabilidadCritico){
-            //personaje.setVida(personaje.getVida()-(super.getDaño()+10))
-            System.out.println("El contrincante recibe un inpacto crítico. 10 puntos de daño extras");
-        } else {
-            //personaje.setVida(personaje.getVida-super.getDaño())
-        }
+            return true;
+        } 
+        
+        return false;
     }
+
+    
+
+    
     
     
     
