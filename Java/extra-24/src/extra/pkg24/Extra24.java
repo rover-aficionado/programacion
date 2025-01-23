@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package extra.pkg24;
+
+import extra.pkg24.juego.AparicionPersonajes;
+import extra.pkg24.utils.Figuras;
 
 /**
  *
@@ -10,11 +9,12 @@ package extra.pkg24;
  */
 public class Extra24 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        AparicionPersonajes ap = new AparicionPersonajes();
+        Figuras figuras = new Figuras();
+        
+        ap.Aparición(figuras);
+        
     }
     
 }

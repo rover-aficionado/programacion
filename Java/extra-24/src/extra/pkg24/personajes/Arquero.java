@@ -21,7 +21,7 @@ public class Arquero extends Personaje{
             System.out.println(super.getNombre() + "ejerce un impácto crítico");
             objetivo.setSalud(objetivo.getSalud()-(arma.getDaño()+10));
             
-        } else {
+        } else { // aplica un golpe normal
             System.out.println(super.getNombre()+"ejerce un impacto normal");
             objetivo.setSalud(objetivo.getSalud()-arma.getDaño());
         }
