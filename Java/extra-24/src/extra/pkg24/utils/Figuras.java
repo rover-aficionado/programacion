@@ -13,7 +13,7 @@ public class Figuras {
         System.out.println("  /  \\ ");
         System.out.println(" /____\\ ");
         System.out.println("  |__|");
-        System.out.println("  ||||");        
+        System.out.print("  ||||");        
     }
     
     // figura ascii de caballero medieval
