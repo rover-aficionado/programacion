@@ -40,18 +40,25 @@ public class Extra29 {
     }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-        String input=scn.nextLine();
+        String input = scn.nextLine();
         
-        // muestra los resultado de los valores de las palabras
-        if(palabraNumero(input) > 100){
-            System.out.println("perdisre");
-            System.out.println(palabraNumero(input));
-        } else if(palabraNumero(input)==100){
-            System.out.println("ganaste");
-            System.out.println(palabraNumero(input));
-        } else {
-            System.out.println("quedaste por debajo");
-            System.out.println(palabraNumero(input));
+        // muestra los resultado de los valores de las palabras y gestiona los posibles errores:
+        try {
+            if(palabraNumero(input) > 100){
+                System.out.println("perdisre");
+                System.out.println(palabraNumero(input));
+            } else if(palabraNumero(input)==100){
+                System.out.println("ganaste");
+                System.out.println(palabraNumero(input));
+            } else {
+                System.out.println("quedaste por debajo");
+                System.out.println(palabraNumero(input));
+            }
+        } catch (NullPointerException e) {
+            System.out.println("error de tipado: se ha introducido un tipo de dato que no se esperaba. Se esperaba String");
+        } catch (Exception a){
+            System.out.println("error no identificado, código de excepción");
+            System.out.println(a);
         }
         
     }
