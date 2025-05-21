@@ -3,6 +3,7 @@
 import utils.bbdd as iden
 import juego as juego
 from datetime import datetime
+from datetime import date
 
 # inicio de sesion y muestra la puntuacion(forma parte del ejercicio 1)
 for i in range(3):
@@ -18,6 +19,8 @@ for i in range(3):
         print("--------------------inicio de juego--------------------")
         
         # seccion de juego (forma parte del ejercicio 2)
+
+        inicio = datetime.now().second
         puntuacion_nueva= 0
         for i in range(10):
             valor = juego.preguntas()
@@ -25,6 +28,9 @@ for i in range(3):
                 puntuacion_nueva += 1
             else:
                 continue
+        fin = datetime.now().second
+        tiempo_empleado = inicio-fin
+        fecha = date.today()
 
         #verifica las puntuaciones
         if puntuacion_nueva > puntuacion:
@@ -32,6 +38,8 @@ for i in range(3):
             print(f"puntuación actualizada a {puntuacion_nueva}")
         else:
             print("no se ha actualizado la puntuacion por no ser mayor que la anterior")
+        
+        iden.guardar_partida(usuario, tiempo_empleado, fecha) # guarda la partida
         break
     else:
         print("usuario o contraseña incorrectos")
