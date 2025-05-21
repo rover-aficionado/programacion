@@ -8,7 +8,7 @@ from datetime import date
 # inicio de sesion y muestra la puntuacion(forma parte del ejercicio 1)
 for i in range(3):
     usuario=input("nombre de usuario: ").strip().upper()
-    contraseña = input("contraseña: ").strip().upper() #TODO: eliminar el upper
+    contraseña = input("contraseña: ").strip()
     
     if iden.jugadores(usuario, contraseña):
         print("contraseña correcta")
