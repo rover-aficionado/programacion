@@ -23,3 +23,4 @@ if es_lychrel(numero, numero_invertido):
     print("es un numero de Lychrel")
 else:
     print("no es un numero de lychrel")
+    
