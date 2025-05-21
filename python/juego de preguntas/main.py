@@ -2,6 +2,7 @@
 
 import utils.bbdd as iden
 import juego as juego
+from datetime import datetime
 
 # inicio de sesion y muestra la puntuacion(forma parte del ejercicio 1)
 for i in range(3):
@@ -24,7 +25,7 @@ for i in range(3):
                 puntuacion_nueva += 1
             else:
                 continue
-        
+
         #verifica las puntuaciones
         if puntuacion_nueva > puntuacion:
             iden.actualiza_puntuaciones(puntuacion_nueva, usuario)

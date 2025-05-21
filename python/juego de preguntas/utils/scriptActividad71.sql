@@ -4,15 +4,18 @@ USE juego;
 
 -- tabla de los usuarios
 CREATE TABLE usuarios(
-	usuario VARCHAR(10) PRIMARY KEY,
+	id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	usuario VARCHAR(10),
 	contraseña VARCHAR(20) NOT NULL,
 	puntuacion INT
 );
 
-INSERT INTO USUARIOS VALUES ('SONIAG','1234',1);
-INSERT INTO USUARIOS VALUES ('SARA','1234',10);
-INSERT INTO USUARIOS VALUES ('GABRIEL','1234',NULL);
-INSERT INTO USUARIOS VALUES ('PRUEBA', 'PRUEBA', 2);
+INSERT INTO usuarios (usuario, contraseña, puntuacion) VALUES
+('SONIAG','1234',1),
+('SARA','1234',10),
+('GABRIEL','1234',NULL),
+('PRUEBA', 'PRUEBA', 2);
+
 
 -- tabla de las preguntas
 CREATE TABLE preguntas(
@@ -122,3 +125,15 @@ INSERT INTO PREGUNTAS VALUES (98,'CUANTOS LADOS TIENE UN HEXÁGONO','6');
 INSERT INTO PREGUNTAS VALUES (99,'CUANTOS SEGUNDOS TIENE UN HORA','3600');
 INSERT INTO PREGUNTAS VALUES (100,'CUAL ES LA CAPITAL DE ESPAÑA','MADRID');
 
+-- tabla de las partidas ganadas
+CREATE TABLE partidas(
+	id_partida INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_usuario INT NOT NULL,
+	tiempo_empleado INT,
+	fecha VARCHAR(50),
+	FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+INSERT INTO partidas (id_usuario, tiempo_empleado, fecha) VALUES 
+(4, 62, '2025-05-20'),
+(2, 45, '2025-05-21');
