@@ -12,7 +12,7 @@ public class Verificar {
             for (int j = 0; j < sudoku[i].length; j++) {
                 for (int k = 0; k <= 9; k++) {
                     // verifica que no existan numeros repetidos en fila, columna y cuadro
-                    if(hayEnColumna(sudoku, i, k) && hayEnFila(sudoku, j, k) && hayEnCuadro(sudoku, i, j, k)){
+                    if(hayEnColumna(sudoku, i, k) && hayEnFila(sudoku, j, k) && hayEnCuadro(sudoku, i, j, k)&& isEmpty(sudoku,k)){
                         return false; // devuelve false si está mal hecho
                     }
                 }
@@ -60,6 +60,21 @@ public class Verificar {
             }
         }
         return false;
+    }
+    
+    public boolean isEmpty (int[][] sudoku, int numero){
+        // lee el sudoku
+        for (int i = 0; i < sudoku.length; i++) {
+            for (int j = 0; j < sudoku[i].length; j++) {
+                for (int k = 0; k < 9; k++) {
+                    // verifica que no exista un espacio vacío
+                    if (sudoku[i][j] == '-') {
+                        return true;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }
 
