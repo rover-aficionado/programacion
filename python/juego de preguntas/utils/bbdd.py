@@ -16,19 +16,19 @@ conn = conect.connect(
 def jugadores(jugador, clave_acceso):
     try:
         cursor=conn.cursor()
-        sql="SELECT usuario, contraseña FROM usuarios"
+        sql="SELECT COUNT(*) FROM USUARIOS WHERE USUARIO='SONIAG' AND CONTRASEñA=SHA2('1234',256);"
         cursor.execute(sql)
+        usuario_contraseña = cursor.fetchall()
 
         # verifica si el usuario y la contraseña son correctas. devuelve True en caso afirmativo
-        for usr, pswd in cursor.fetchall():
-            if jugador == usr and clave_acceso == pswd:
-                return True
+        print(usuario_contraseña[0][0])
+        if usuario_contraseña[0][0] == 1:
+            return True
         return False
     
     except Exception as e:
         print("error. no se pudo conectar a la base de datos")
         print(e)
-
 
 # muestreo de puntuaciones
 def puntuaciones(jugador):

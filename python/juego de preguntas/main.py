@@ -4,6 +4,9 @@ import utils.bbdd as iden
 import juego as juego
 from datetime import datetime
 from datetime import date
+import utils.aleatorio as al
+import utils.ficheros as fichero
+import utils.bbdd as bbdd
 
 # inicio de sesion y muestra la puntuacion(forma parte del ejercicio 1)
 for i in range(3):
@@ -19,17 +22,22 @@ for i in range(3):
         print("--------------------inicio de juego--------------------")
         
         # seccion de juego (forma parte del ejercicio 2)
-
-        inicio = datetime.now().second
+        inicio = datetime.now().second 
         puntuacion_nueva= 0
-        for i in range(10):
-            valor = juego.preguntas()
+        numeros_aleatorios = al.numero_aleatorio() #genera una lista de 10 numeros aleatorios
+        preguntas_acertadas={} # se guardarán en el informe de la partida
+        
+        # genera las preguntas
+        for i in numeros_aleatorios:
+            valor = juego.preguntas(i)
+            pregunta, respuesta = bbdd.pregunta(i)
             if valor:
-                puntuacion_nueva += 1
+                preguntas_acertadas[pregunta]=respuesta
+                puntuacion_nueva+=1
             else:
                 continue
         fin = datetime.now().second
-        tiempo_empleado = inicio-fin
+        tiempo_empleado = fin-inicio
         fecha = date.today()
 
         #verifica las puntuaciones
@@ -40,6 +48,7 @@ for i in range(3):
             print("no se ha actualizado la puntuacion por no ser mayor que la anterior")
         
         iden.guardar_partida(usuario, tiempo_empleado, fecha) # guarda la partida
+        fichero.informe(usuario, puntuacion_nueva, tiempo_empleado, fecha, preguntas_acertadas)
         break
     else:
         print("usuario o contraseña incorrectos")

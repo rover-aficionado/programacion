@@ -2,26 +2,26 @@ DROP DATABASE IF EXISTS juego;
 CREATE DATABASE juego;
 USE juego;
 
--- tabla de los usuarios
-CREATE TABLE usuarios(
+create table usuarios (
 	id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	usuario VARCHAR(10),
-	contraseña VARCHAR(20) NOT NULL,
+	contraseña CHAR(64) NOT NULL,
 	puntuacion INT
 );
 
 INSERT INTO usuarios (usuario, contraseña, puntuacion) VALUES
-('SONIAG','1234',1),
-('SARA','1234',10),
-('GABRIEL','1234',NULL),
-('ROBER', '1234', 2);
+('SONIAG',sha2('1234', 256),1),
+('SARA',sha2('1234', 256),10),
+('GABRIEL',sha2('1234', 256),NULL),
+('ROBER', sha2('1234', 256), 2);
 
+-- SI DEVUELVE 1 OK
+-- SELECT COUNT(*) FROM USUARIOS WHERE USUARIO='SONIAG' AND CONTRASEñA=SHA2('1234',256);
 
--- tabla de las preguntas
-CREATE TABLE preguntas(
-	codigo INT NOT NULL PRIMARY KEY,
-    texto VARCHAR(2000) NOT NULL,
-    respuesta VARCHAR(2000) NOT NULL
+CREATE TABLE preguntas (
+  codigo INT PRIMARY KEY,
+  texto VARCHAR(2000) NOT NULL,
+  respuesta VARCHAR(2000)
 );
 
 INSERT INTO PREGUNTAS VALUES (1,'CUAL ES LA CAPITAL DE FRANCIA','PARÍS');
@@ -137,3 +137,6 @@ CREATE TABLE partidas(
 INSERT INTO partidas (id_usuario, tiempo_empleado, fecha) VALUES 
 (4, 62, '2025-05-20'),
 (2, 45, '2025-05-21');
+
+
+COMMIT;

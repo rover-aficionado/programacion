@@ -1,3 +1,0 @@
-1 división por campos (editar en la base de datos)
-2 top de partidas segun el tiempo (cambiar en la base de datos)
-3 añadir campo en la base de datos para la fecha y la hora de cada una de las partidas

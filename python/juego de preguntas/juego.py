@@ -5,23 +5,20 @@ import utils.bbdd as bbdd
 from datetime import datetime
 
 # genera una pregunta en base a un numero pseudoaleatorio
-def preguntas():
+def preguntas(numero):
 
-    numero_aleatorio = al.numero()
-    pregunta, respuesta = bbdd.pregunta(numero_aleatorio)
+    pregunta, respuesta = bbdd.pregunta(numero)
 
+    inicio_temporizador = datetime.now().second # inicio del cáculo de tiempo
 
-    inicio = datetime.now().second
-    # realiza la pregunta
+    #realiza la pregunta
     print(pregunta)
     respuesta_jugaor=input("respuesta: ").strip().upper()
-    final = datetime.now().second
+    final_temporizador= datetime.now().second
 
-    # calcula el tiempo empleado por el usuario para responder la pregunta
-    tiempo_usado = final-inicio
-
-    # verifica la respuesta y que el tiempo sea menor que 10 (forma parte del ejercicio 3)
-    if tiempo_usado >= 10:
+    #calcula el tiempo empleado
+    tiempo_total = final_temporizador-inicio_temporizador
+    if tiempo_total >= 10:
         print("respuesta no válida: tiempo excedido")
         return False
     elif str(respuesta) == str(respuesta_jugaor):
